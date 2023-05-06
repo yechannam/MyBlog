@@ -9,12 +9,7 @@ import { graphql } from 'gatsby'
 import { PostListItemType as PostType } from 'types/PostItem.types'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import queryString, { ParsedQuery } from 'query-string'
-
-const CATEGORY_LIST = {
-  All: 5,
-  Web: 3,
-  Mobile: 2,
-}
+import Template from 'components/Common/Template'
 
 const Container = styled.div`
   display: flex;
@@ -78,13 +73,11 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     [],
   )
   return (
-    <Container>
-      <GlobalStyle />
+    <Template>
       <Introduction profileImage={gatsbyImageData} />
-      <CategoryList selectedCategory={selectedCategory} categoryList={CATEGORY_LIST} />
+      <CategoryList selectedCategory={selectedCategory} categoryList={categoryList} />
       <PostList selectedCategory={selectedCategory} posts={edges} />
-      <Footer />
-    </Container>
+    </Template>
   )
 }
 
@@ -98,6 +91,9 @@ export const getPostList = graphql`
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             summary
@@ -112,7 +108,7 @@ export const getPostList = graphql`
         }
       }
     }
-    file(name: { eq: "download" }) {
+    file(name: { eq: "profile-image" }) {
       childImageSharp {
         gatsbyImageData(width: 120, height: 120)
       }

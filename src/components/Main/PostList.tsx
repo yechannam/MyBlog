@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent } from "react";
 import PostItem from "./PostItem";
 import {PostListItemType, PostListItemType as PostType} from "types/PostItem.types"
 import useInfiniteScroll, { useInfiniteScrollType } from "hooks/useInfiniteScroll";
@@ -33,12 +33,12 @@ const PostList: FunctionComponent<PostListProps> = function
 
 	return (
 		<PostListWrapper ref={containerRef}>	
-			{postList.map(({ node: {id, frontmatter} }: 
+			{postList.map(({ node: {id, fields: { slug }, frontmatter} }: 
 			PostListItemType) => (
 					<PostItem 
 					{...frontmatter}
-					link="https://www.google.co.kr/"
-					key={id} 
+					link={slug}
+					key={id}
 					/>
 				))}
 		</PostListWrapper>
