@@ -18,9 +18,7 @@ const FooterWrapper = styled.footer`
 const Footer: FunctionComponent = () => {
 	return (
 		<FooterWrapper>
-			Thank you for visiting my blog,
-			Have a good day :)
-			<br /> 2023 Developer yecn, Powerd by Gatsby
+			@2023 yecn
 		</FooterWrapper>
 	)
 }

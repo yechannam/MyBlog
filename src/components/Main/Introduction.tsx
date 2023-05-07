@@ -9,7 +9,9 @@ type IntroductionProps = {
 
 const Background = styled.div`
 	width: 100%;
-	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	background-image: linear-gradient(60deg, #87CEEB 0%, #F08080 100%);
+	filter: saturate(2);
+	opacity: 0.8;
 	color: #ffffff;
 `
 
@@ -17,10 +19,11 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
-	width: 768px;
+	align-items: center;
+	text-align: center;
+	width: 100%;
 	height: 400px;
-	margin: 0 0 0 50px;
+	margin: 0;
 
 	@media (max-width: 768px) {
 		width: 100%;
@@ -28,8 +31,9 @@ const Wrapper = styled.div`
 		padding: 0 20px;
 	}
 `
+
 const SubTitle = styled.div`
-	font-size: 20px;
+	font-size: 30px;
 	font-weight: 400;
 
 	@media (max-width: 768px) {
@@ -53,8 +57,9 @@ const Introduction: FunctionComponent<IntroductionProps> = ({profileImage}) => {
 			<Wrapper>
 				<ProfileImage profileImage={profileImage} />
 				<div>
-					<SubTitle>Nice to Mett you</SubTitle>
-					<Title>I'm Junior Developer</Title>
+					<SubTitle>yecn's</SubTitle>
+					<br />
+					<Title>TECH BLOG</Title>
 				</div>
 			</Wrapper>
 		</Background>
