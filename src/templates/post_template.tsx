@@ -1,4 +1,5 @@
 import Template from "components/Common/Template";
+import CommentWidget from "components/Post/CommentWidget";
 import PostContent from "components/Post/PostContent";
 import PostHead from "components/Post/PostHead";
 import { graphql } from "gatsby";
@@ -11,12 +12,16 @@ type postTemplateProps = {
 			edges: PostPageItemType[]	
 		}
 	}	
+	location: {
+		href: string
+	}
 }
 
 const PostTemplate: FunctionComponent<postTemplateProps> = function({
 	data: {
 		allMarkdownRemark: { edges }
 	},
+	location: { href },
 }) {
 	const {
 		node: {
@@ -28,13 +33,14 @@ const PostTemplate: FunctionComponent<postTemplateProps> = function({
 				categories,
 				thumbnail: {
 					childImageSharp: {gatsbyImageData},
+					publicURL
 				},
 			},
 		},
 	} = edges[0]
 	
 	return (
-		<Template>
+		<Template title={title} description={summary} url={href} image={publicURL}>
 			<PostHead
 				title={title}
 				date={date}
@@ -42,6 +48,7 @@ const PostTemplate: FunctionComponent<postTemplateProps> = function({
 				thumbnail={gatsbyImageData}
 			/>
 			<PostContent html={html} />
+			<CommentWidget />
 		</Template>
 	)
 }
@@ -63,6 +70,7 @@ export const queryMarkdownDataBySlug = graphql`
 							childImageSharp {
 								gatsbyImageData
 							}
+							publicURL
 						}
 					}
 				}
