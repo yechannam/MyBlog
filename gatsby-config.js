@@ -3,7 +3,7 @@ module.exports = {
     title: `yecn's 개발 블로그`,
     description: `블로그 만들기부터 시작하기`,
     author: `yecn`,
-    siteUrl: 'https://my-website-link.com',
+    siteUrl: 'https://yechannam.github.io/',
   },
   plugins: [
     {
@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://my-website.com/',
+        siteUrl: 'https://yechannam.github.io/',
         stripQuerySting: true,
       }
     },
